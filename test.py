@@ -1,6 +1,6 @@
 import numpy
 import json
-from functions.data import readData, writeData
+from functions.getData import readData, writeData
 
 # with open('./words/nomen.txt', 'r', encoding='utf-8') as file:
 #     x = file.read()
