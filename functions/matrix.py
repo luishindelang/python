@@ -1,3 +1,18 @@
+def uniformMatrix(m):
+    lenth = 0
+    for x in m:
+        if lenth < len(x):
+            lenth = len(x)
+    for x in m:
+        if len(x) < lenth:
+            add = lenth - len(x)
+            counter = 0
+            while counter < add:
+                x.append(0)
+                counter += 1
+    return m
+
+
 def multiplyMatrix(m1, m2):
     m1x = len(m1[0])
     m1y = len(m1)
@@ -20,21 +35,6 @@ def multiplyMatrix(m1, m2):
     return my
 
 
-def uniformMatrix(m):
-    maxLenth = 0
-    for x in m:
-        if maxLenth < len(x):
-            maxLenth = len(x)
-    for x in m:
-        if len(x) < maxLenth:
-            add = maxLenth - len(x)
-            counter = 0
-            while counter < add:
-                x.append(0)
-                counter += 1
-    return m
-
-
 def listToMatrix(l):
     my = list()
     lenth = len(l)
@@ -51,13 +51,13 @@ def listToMatrix(l):
     return my
 
 
-def nullMatrix(lenth):
+def nullMatrix(ylenth, xlenth):
     my = list()
     y = 0
-    while y < lenth:
+    while y < ylenth:
         x = 0
         mx = list()
-        while x < lenth:
+        while x < xlenth:
             mx.append(0)
             x += 1
         my.append(mx)
@@ -65,8 +65,13 @@ def nullMatrix(lenth):
     return my
 
 
-def einheitsMatrix(lenth):
-    m = nullMatrix(lenth)
+def einheitsMatrix(ylenth, xlenth):
+    m = nullMatrix(ylenth, xlenth)
+    if ylenth >= xlenth:
+        lenth = xlenth
+    else:
+        lenth = ylenth
+
     xy = 0
     while xy < lenth:
         m[xy][xy] = 1
@@ -75,14 +80,36 @@ def einheitsMatrix(lenth):
     return m
 
 
+def enlargeMatrix(m, yadd, xadd):
+    y = 0
+    ylenth = len(m)
+    while y < ylenth + yadd:
+        if y < ylenth:
+            x = 0
+            while x < xadd:
+                m[y].append(0)
+                x += 1
+        else:
+            x = 0
+            newlist = list()
+            while x < ylenth + xadd:
+                newlist.append(0)
+                x += 1
+            m.append(newlist)
+        y += 1
+    return m
+
+
 def transponieren(m):
-    lenth = len(m)
+    m = uniformMatrix(m)
+    ylenth = len(m)
+    xlenth = len(m[0])
     my = list()
     x = 0
-    while x < lenth:
+    while x < xlenth:
         y = 0
         mx = list()
-        while y < lenth:
+        while y < ylenth:
             mx.append(m[y][x])
             y += 1
         my.append(mx)
