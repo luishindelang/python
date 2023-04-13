@@ -1,5 +1,7 @@
 import numpy
 import json
+import math
+import PyPDF2
 from functions.getData import readData, writeData
 from functions.matrix import listToMatrix, uniformMatrix, multiplyMatrix, nullMatrix, einheitsMatrix, transponieren, enlargeMatrix
 from functions.texttomatrix import strToList, strToMatrix, getStandardDevation
@@ -112,12 +114,15 @@ def showMatrix(m):
 
 # m1 = strToMatrix('hallo! das ist mein name "Luis". Aber was vielleicht noch viel spannender ist, ist die Frage ob ich alles richtig schreibe. Denn ich reihenfolge spielt auch eine rolle')
 
-m2 = strToMatrix(readData('words/nomen.json'))
-
 # showMatrix(m2)
 
-std = getStandardDevation(transponieren(m2))
+# m2 = strToMatrix(readData('words/nomen.json'))
 
-x = getStandardDevation(transponieren(strToMatrix('Zuhause')))
+# std = getStandardDevation(transponieren(m2))
 
-print(x)
+# x = getStandardDevation(transponieren(strToMatrix('Zuhause')))
+
+# print(x)
+
+
+# data = readData('rechnung.json')
